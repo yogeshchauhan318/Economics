@@ -1,0 +1,13 @@
+Y_income=seq(0,10000,100)
+i=2
+c_consumption=c()
+c_consumption[1]=40
+while(i<=length(Y_income)){
+  c_consumption[i]=Y_income[i]-c_consumption[i-1]*(runif(1,.5,.8))
+  i=i+1}
+  c_consumption
+  df=data.frame(Y_income,c_consumption)
+  summary(lm(c_consumption~Y_income,data=df))
+  plot(Y_income,c_consumption,col="green")
+  abline(0,1,col="red")
+  abline(lm(c_consumption~Y_income,data=df),col="blue")
